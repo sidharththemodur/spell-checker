@@ -120,13 +120,12 @@ void printDeletes(string *dict, string word, int len) {
     free(permutation);
 }
 
+// will set word[index] to 'Z'
 void printReplacements(string *dict, int index, int length, char *word) {
-    char oldChar = word[index];
-    for (char c = 'a'; c <= 'z'; c++) {
+    for (char c = 'A'; c <= 'Z'; c++) {
         word[index] = c;
         if (dictContains(dict, word)) printf("%s, ", word);
     }
-    word[index] = oldChar;
 }
 
 void printAdds(string *dict, string word, int len) {
@@ -145,7 +144,9 @@ void printMisspellings(string *dict, string word) {
     printDeletes(dict, word, len);
     printAdds(dict, word, len);
     for (int i = 0; i < len; i++) {
+        char oldChar = permutation[i];
         printReplacements(dict, i, len, word);
+        permutation[i] = oldChar;
     }
 }
 
