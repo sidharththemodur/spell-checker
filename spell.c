@@ -73,10 +73,10 @@ void addToHash(string *arr, string toAdd) {
 
 bool charcmp(char c, char d) {
     if (c >= 'a' && c <= 'z') {
-        c = 'A' + (c - 'a');
+        c -= 32;
     }
     if (d >= 'a' && d <= 'z') {
-        d = 'A' + (d - 'a');
+        d -= 32;
     }
     return (c == d);
 }
